@@ -15,7 +15,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-        return view('posts.index');
+        return view('posts.index')->with('posts', Post::all());
     }
 
     /**
@@ -37,7 +37,7 @@ class PostsController extends Controller
     public function store(CreatePostsRequest $request)
     {
         // upload image to storeage
-        $image = $request->image->store('posts');
+        $image = $request->image->store('posts',['disk' => 'public']);
         // create posts
         Post::create([
             'title' => $request->title,
