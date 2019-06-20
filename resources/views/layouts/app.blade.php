@@ -85,10 +85,10 @@
                         <div class="col-md-4">
                             <ul class="list-group">
                                 <li class="list-group-item">
-                                <a href="{{route('posts.index')}}">Post</a>
+                                <a href="">Post</a>
                                 </li>
                                 <li class="list-group-item">
-                                    <a href="{{route('categories.index')}}">Category</a>
+                                    <a href="{{'/categories'}}">Category</a>
                                 </li>
                             </ul>
                         </div>
@@ -103,5 +103,9 @@
             </div>
         </main>
     </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    @yield('scripts')
 </body>
 </html>
