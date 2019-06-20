@@ -9,7 +9,7 @@
     </div>
 
     <div class="card-body">
-    <form action="{{route('posts.create')}}" method="POST">
+    <form action="{{route('posts.store')}}" method="POST" enctype="multipart/form-data">
     @csrf
 
 
