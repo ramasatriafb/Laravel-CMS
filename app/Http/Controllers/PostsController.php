@@ -92,13 +92,31 @@ class PostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Post $post)
+    public function destroy($id)
     {
-        $post->delete();
+        $post = Post::withTrashed()->where('id', $id)->firstOrFail();
+        if ($post->trashed()) {
+            $post->forceDelete();
+        } else {
+            $post->delete();
+        }
+        
 
-
-        session()->flash('success','Posts Trashed Successfully');
+        session()->flash('success','Posts Deleted Successfully');
         //redirect user
         return redirect(route('posts.index'));
+    }
+
+    
+        /**
+     * Display a list of all trashed post.
+     * @return \Illuminate\Http\Response
+     */
+
+    public function trashed()
+    {
+        $trashed = Post::withTrashed()->get();
+
+        return view('posts.index')->with('posts',$trashed);
     }
 }
