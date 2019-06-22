@@ -25,7 +25,13 @@
                         {{$post->title}}
                     </td>
                     <td> <a href="" class="button btn btn-info btn-sm">Edit</a></td>
-                    <td> <a href="" class="button btn btn-danger btn-sm">Trash</a></td>
+                    <td>
+                        <form action="{{route('posts.destroy', $post->id)}}" method="POST"> 
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="button btn btn-danger btn-sm">Trash</button>        
+                        </form>
+                    </td>
                 </tr>
                 @endforeach
                 
